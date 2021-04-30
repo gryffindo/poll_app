@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<title>Your Created Polls</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 my-5">
+				<div class="card card-body">
+					<h5>Your All Polls</h5>
+
+					<ul class="list-group">
+						<% for (let p of polls) { %>
+						<li class="list-group-item">
+							<a href="/polls/<%= p._id %>">
+								<%= p.title %>
+							</a>
+						</li>
+						<% } %>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+</html>

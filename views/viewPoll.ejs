@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<title>Put your opinion</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 my-5">
+				<div class="card card-body">
+					<h5>Title: <%= poll.title %> </h5>
+					<p>Description: <%= poll.description %></p>
+
+					<div class="my-3">
+						<h5>Result: </h5>
+						<ul class="list-group">
+							<% for(let r of result) {%>
+							<li class="list-group-item">
+								<p>
+									<%= r.name %> --> <strong> <%= r.percentage.toFixed(2) %> %</strong>
+								</p>
+							</li>
+							<% } %>
+						</ul>
+					</div>
+					<div class="my-4">
+						<h5>What is your Opinion</h5>
+						<form action="/polls/<%= poll._id %>" method="POST">
+							<% for(let option of poll.options)  {%>
+							<div class="custom-control custom-radio">
+								<input type="radio" name="option" id="<%= option._id %>" class="custom-control-input"
+									value="<%= option.id%>">
+								<label class="custom-control-label" for="<%= option._id%>">
+									<%= option.name %>
+								</label>
+							</div>
+							<% } %>
+							<input type="submit" value="Submit your opinion" class="btn btn-primary">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+</html>
